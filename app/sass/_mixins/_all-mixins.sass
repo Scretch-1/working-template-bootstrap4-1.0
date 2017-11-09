@@ -47,7 +47,21 @@
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
-
+  
+// усечение блока с текстом с указанием максимального количества строк
+// пример: @include ellipsis(2em,1);
+=ellipsis($max-height, $lines: 2)
+  // Fallback for non-webkit browsers.
+  // Fallback does not render ellipsis.
+  overflow: hidden
+  max-height: $max-height
+  // Webkit solution for multiline ellipsis
+  display: -webkit-box
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: $lines
+  // Solution for Opera
+  text-overflow: -o-ellipsis-lastline
+  
 // Стилизация placeholder
 // пример: @include place($red);
 =place($cl)
